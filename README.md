@@ -22,5 +22,3 @@ Use `http://localhost:8080/?skipIntro=1` to skip the opening logo transition dur
 - `assets/` — images extracted from the supplied Figma file
 
 The enquiry form opens the visitor's email client addressed to `office@latzman.ch`; connect it to your preferred form backend before production deployment if server-side delivery is required.
-# latzman
-# latzman

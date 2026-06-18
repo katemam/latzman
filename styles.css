@@ -350,7 +350,7 @@ h3 {
   min-height: 395px;
   overflow: hidden;
   background: var(--navy);
-  box-shadow: 0 20px 54px rgba(7,18,31,.1);
+  box-shadow: none;
 }
 .sticky-picture::before,
 .sticky-picture::after {
@@ -358,12 +358,12 @@ h3 {
 }
 .sticky-picture img {
   width: 100%;
-  height: calc(100% + 36px);
+  height: 100%;
   object-fit: cover;
-  object-position: center 48%;
-  transform: translate3d(0, var(--sticky-shift, -8px), 0) scale(var(--sticky-scale, 1.035));
+  object-position: center 24%;
+  transform: none;
   filter: none;
-  will-change: transform;
+  will-change: auto;
 }
 .services {
   position: relative;
