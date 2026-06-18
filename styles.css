@@ -354,19 +354,7 @@ h3 {
 }
 .sticky-picture::before,
 .sticky-picture::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-}
-.sticky-picture::before {
-  background: linear-gradient(180deg, rgba(248,249,251,.52) 0%, rgba(248,249,251,.18) 5%, rgba(248,249,251,0) 14%);
-}
-.sticky-picture::after {
-  background:
-    linear-gradient(180deg, rgba(8,19,31,.055) 0%, transparent 22%, transparent 80%, rgba(248,249,251,.16) 94%, rgba(248,249,251,.48) 100%),
-    linear-gradient(90deg, rgba(8,19,31,.055), transparent 20%, transparent 80%, rgba(8,19,31,.045));
+  content: none;
 }
 .sticky-picture img {
   width: 100%;
@@ -374,7 +362,7 @@ h3 {
   object-fit: cover;
   object-position: center 48%;
   transform: translate3d(0, var(--sticky-shift, -8px), 0) scale(var(--sticky-scale, 1.035));
-  filter: saturate(.96) contrast(1.015) brightness(.97);
+  filter: none;
   will-change: transform;
 }
 .services {
