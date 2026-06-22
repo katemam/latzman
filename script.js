@@ -53,7 +53,7 @@
     },
     {
       scope: '.site-footer',
-      selectors: ['.footer-left', '.footer-disclaimer', '.footer-links', '.footer-right'],
+      selectors: ['.footer-logo', '.footer-tagline', '.footer-disclaimer', '.footer-links', '.footer-right'],
       step: 120
     }
   ];
@@ -89,15 +89,17 @@
       return;
     }
 
-    const observer = new IntersectionObserver((entries, obs) => {
+    // Keep observing so components re-animate every time they re-enter the
+    // viewport — scrolling up reveals them again for a continuous premium feel.
+    // No negative bottom margin: elements at the very end of the page (the
+    // footer's legal row) must still register as visible at full scroll.
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
       });
     }, {
       threshold: 0.08,
-      rootMargin: '0px 0px -8% 0px'
+      rootMargin: '0px 0px 0px 0px'
     });
 
     revealItems.forEach((item) => observer.observe(item));
@@ -116,6 +118,14 @@
     if (intro) intro.remove();
     startReveals();
   }
+
+  const siteHeader = document.getElementById('site-header');
+  const updateHeader = () => {
+    if (!siteHeader) return;
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
 
   const menuButton = document.querySelector('.menu-button');
   const mobileNav = document.getElementById('mobile-nav');
@@ -148,7 +158,7 @@
     const travel = Math.max(1, stickySection.offsetHeight - window.innerHeight);
     const progress = Math.max(0, Math.min(1, -rect.top / travel));
     const shift = -8 - (16 * progress);
-    const scale = 1.04 - (.025 * progress);
+    const scale = 1.47 - (.03 * progress);
     doc.style.setProperty('--sticky-shift', `${shift.toFixed(2)}px`);
     doc.style.setProperty('--sticky-scale', scale.toFixed(4));
   };
