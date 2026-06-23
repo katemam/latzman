@@ -53,7 +53,7 @@
     },
     {
       scope: '.site-footer',
-      selectors: ['.footer-logo', '.footer-tagline', '.footer-disclaimer', '.footer-links', '.footer-right'],
+      selectors: ['.footer-logo', '.footer-disclaimer', '.footer-links', '.footer-right'],
       step: 120
     }
   ];
@@ -158,7 +158,7 @@
     const travel = Math.max(1, stickySection.offsetHeight - window.innerHeight);
     const progress = Math.max(0, Math.min(1, -rect.top / travel));
     const shift = -8 - (16 * progress);
-    const scale = 1.47 - (.03 * progress);
+    const scale = 1.385 - (.03 * progress);
     doc.style.setProperty('--sticky-shift', `${shift.toFixed(2)}px`);
     doc.style.setProperty('--sticky-scale', scale.toFixed(4));
   };
